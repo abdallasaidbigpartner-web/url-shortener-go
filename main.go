@@ -18,6 +18,7 @@ import (
 "log"
 "math/big"
 "net/http"
+"os"
 
 _ "github.com/lib/pq"
 )
@@ -157,7 +158,11 @@ json.NewEncoder(w).Encode(map[string]int{"click_count": clickCount})
 
 func main() {
 var err error
-db, err = sql.Open("postgres", "dbname=mydb sslmode=disable user=u0_a392")
+dbUser := os.Getenv("PGUSER")
+	if dbUser == "" {
+		dbUser = "postgres"
+	}
+	db, err = sql.Open("postgres", fmt.Sprintf("dbname=mydb sslmode=disable user=%s", dbUser))
 if err != nil {
 log.Fatal(err)
 }
