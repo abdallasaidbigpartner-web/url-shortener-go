@@ -40,10 +40,13 @@ This project exists specifically to demonstrate Go's concurrency model - gorouti
 
 ## Running Locally
 
+See `.env.example` for the required environment variable (`PGUSER` - defaults to `postgres` if unset).
+
     createdb mydb  # if not already created
     psql mydb -c "CREATE TABLE IF NOT EXISTS short_urls (id SERIAL PRIMARY KEY, short_code VARCHAR(10) UNIQUE NOT NULL, original_url TEXT NOT NULL, created_at TIMESTAMP DEFAULT NOW());"
     psql mydb -c "CREATE TABLE IF NOT EXISTS click_events (id SERIAL PRIMARY KEY, short_code VARCHAR(10) NOT NULL, clicked_at TIMESTAMP DEFAULT NOW());"
 
+    export PGUSER=your_postgres_user
     go build -o url-shortener main.go
     ./url-shortener
 
