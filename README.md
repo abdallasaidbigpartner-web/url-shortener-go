@@ -1,6 +1,6 @@
 # URL Shortener (Go)
 
-![CI](https://github.com/abdallasaidbigpartner-web/url-shortener-go/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/abdallasaidbigpartner-web/url-shortener-go/actions/workflows/ci.yml/badge.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 A URL shortener service demonstrating Go's core strength: concurrent processing via goroutines and channels. Click analytics are recorded asynchronously in a background worker, decoupled from the user-facing redirect - a standard real-world pattern for separating a fast-path (the redirect, which must be instant) from a slow-path (analytics writes, which can happen whenever).
 
